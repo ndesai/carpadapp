@@ -1,0 +1,17 @@
+<RCC>
+	<qresource prefix="/">
+		<file>qml/Label.qml</file>
+		<file>qml/MusicPlayerSongDelegate.qmlc</file>
+		<file>qml/Label.qmlc</file>
+		<file>qml/MusicPlayer.qml</file>
+		<file>qml/ArtworkFullscreenBackground.qml</file>
+		<file>qml/Viewport.qml</file>
+		<file>qml/Container.qmlc</file>
+		<file>qml/Container.qml</file>
+		<file>qml/BaseViewport.qml</file>
+		<file>qml/MusicPlayer.qmlc</file>
+		<file>qml/main.qml</file>
+		<file>qml/Viewport.qmlc</file>
+		<file>qml/MusicPlayerSongDelegate.qml</file>
+	</qresource>
+</RCC>

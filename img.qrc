@@ -1,0 +1,14 @@
+<RCC>
+	<qresource prefix="/">
+		<file>img/asset-amg-logo.png</file>
+		<file>img/c43-trim.png</file>
+		<file>img/car-c43.png</file>
+		<file>img/asset-nd-logo.png</file>
+		<file>img/car-c43-ultralow.png</file>
+		<file>img/logo-Mercedes-Benz.png</file>
+		<file>img/car-c43-ultrahigh.png</file>
+		<file>img/asset-bg-sunset.png</file>
+		<file>img/asset-mercedes-logo.png</file>
+		<file>img/car-c43-low.png</file>
+	</qresource>
+</RCC>
