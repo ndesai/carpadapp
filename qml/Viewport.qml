@@ -12,6 +12,8 @@ BaseViewport {
     keyMapping: {
         "Qt.Key_D" : function() {
             Utility.isDebugAllEnabled ^= 1;
+            console.log(_appleMusic);
+            console.log(Utility.getQmlObjectById("_appleMusic"));
         }
     }
 
@@ -54,8 +56,13 @@ BaseViewport {
 
         ArtworkFullscreenBackground {
             source: _musicPlayer.currentlyPlayingAlbumArtwork
-//            artworkOverlayColor: "#222222"
         }
+    }
+
+    MusicGrid {
+        id: _musicGrid
+        anchors.fill: _itemContainer
+        model: _topSongsModel
     }
 
     MusicPlayer {
@@ -79,6 +86,7 @@ BaseViewport {
             color: "transparent"
             border.width: 1
             border.color: "#77CCCCCC"
+            visible: Utility.isDebugAllEnabled
         }
 
         Row {

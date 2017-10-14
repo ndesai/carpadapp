@@ -109,7 +109,7 @@ Container {
                     loops: Animation.Infinite
 
                     from: 0; to: 360;
-                    duration: 1200
+                    duration: 2000
                 }
             }
 
@@ -130,7 +130,7 @@ Container {
                 radius: width / 2
                 color: "transparent"
                 border.width: 1
-                border.color: model.artwork.bgColor
+                border.color: model.artwork.textColor1
             }
         }
     }

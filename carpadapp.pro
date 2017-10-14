@@ -1,4 +1,4 @@
-QT += quick network
+QT += quick quick-private network
 CONFIG += c++11
 CONFIG -= app_bundle
 

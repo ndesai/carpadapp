@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QSurfaceFormat>
+#include <QQuickWindow>
 
 #include "qmlapplemusic.h"
 #include "qmlutility.h"
@@ -19,6 +21,14 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }
+
+//    QQuickWindow *qWindow = qobject_cast<QQuickWindow*>(engine.rootObjects().at(0));
+
+//    Q_ASSERT(qWindow != nullptr);
+
+//    QSurfaceFormat format = qWindow->format();
+//    format.setSamples(16);
+//    qWindow->setFormat(format);
 
     return app.exec();
 }

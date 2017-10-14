@@ -2,7 +2,7 @@
 
 #include <QtQml>
 
-static const QString token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkdYRjdHNTMyU0wifQ.eyJpc3MiOiJUSjVEOEc1TDVZIiwiaWF0IjoxNTA3NDgzMjEwLCJleHAiOjE1MDgwMDE2MTB9.8F_dIERqhmrZqUbcGDO3yfJLUUfbRetPOFm76q8EwRpv4tmQfRWyarUMWbC-YaMfeMY2TsIi4N3kLIqauiKk_g";
+static const QString token = "";
 static const QString apiUrl = "https://api.music.apple.com/";
 static const QString apiVersion = "v1";
 

@@ -5,12 +5,23 @@
 #include <QtQml>
 #include <QFontDatabase>
 
+#include <QtQml/private/qv4qobjectwrapper_p.h>
+#include <QtQml/private/qv8engine_p.h>
+#include <QtQml/private/qjsvalue_p.h>
+#include <QtQml/private/qv4scopedvalue_p.h>
+#include <QtQml/private/qqmlcontext_p.h>
+#include <QtQml/private/qqmlboundsignal_p.h>
+
 QmlUtility *QmlUtility::s_instance = nullptr;
 
 QmlUtility::QmlUtility(QQmlEngine *qmlEngine, QObject *parent)
     : QObject(parent)
     , m_qmlEngine(qmlEngine)
+#if defined(Q_OS_IOS) || defined(Q_OS_ANDROID)
+    , m_isDebugAllEnabled(false)
+#else
     , m_isDebugAllEnabled(true)
+#endif
 {
     qDebug() << "Fonts:\n" << QFontDatabase().families();
 }
@@ -68,4 +79,17 @@ QColor QmlUtility::getRandomColor()
     float currentHue = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
     return QColor::fromHslF(std::fmod(currentHue, 1.0f), 1.0, 0.5);
 }
+
+QString QmlUtility::getQmlIdentifier(QObject *qmlItem)
+{
+    return "";
+}
+
+QJSValue QmlUtility::getQmlObjectById(const QString& id) {
+    QV4::ExecutionEngine *v4 = QV8Engine::getV4(m_qmlEngine);
+    QV4::Scope scope(const_cast<QV4::ExecutionEngine *>(v4));
+    QV4::ScopedString name(scope, v4->newString(id));
+    return QJSValue(v4, v4->currentContext->getProperty(name));
+}
+
 

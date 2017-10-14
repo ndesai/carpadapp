@@ -4,6 +4,8 @@ import QtQuick.XmlListModel 2.0
 Container {
     id: root
 
+    property bool isOpen: false
+
     property var songModel: null
 
     property alias currentlyPlayingAlbumArtwork: _imageAlbumArtwork
@@ -13,6 +15,20 @@ Container {
     width: dp(500)
     height: dp(768)
     backgroundColor: "#192225"
+
+    Container {
+        anchors.top: parent.top
+        anchors.topMargin: dp(40)
+        anchors.right: parent.left
+        backgroundColor: "#192225"
+
+        width: dp(100)
+        height: dp(120)
+
+        onClicked: {
+            root.isOpen ^= 1;
+        }
+    }
 
     //    XmlListModel {
     //        id: _XmlListModel
@@ -98,71 +114,33 @@ Container {
         }
     }
 
-    //    ListView {
-    //        id: _listView
+    StateGroup {
+        id: _stateGroupVisibility
+        state: "hidden"
+        states: [
+            State {
+                name: "hidden"
+                when: !isOpen
+                PropertyChanges {
+                    target: root
+                    anchors.rightMargin: -1*root.width
+                }
+            }
+        ]
 
-    //        signal imageLoaded(int index, var imageObject)
-
-    //        anchors.fill: parent
-    //        model: _topSongsModel
-    //        orientation: ListView.Horizontal
-    //        highlightRangeMode: ListView.StrictlyEnforceRange
-    //        preferredHighlightBegin: 0
-    //        preferredHighlightEnd: width - 1
-
-    //        delegate: Item {
-    //            id: _itemDelegate
-    //            property var modelData: model
-    //            property alias image: _imageCenter
-
-    //            width: ListView.view.width
-    //            height: ListView.view.height
-
-    //            Item {
-    //                id: _imageContainer
-    //                anchors.centerIn: parent
-    //                width: dp(560); height: width
-
-    //                Image {
-    //                    id: _imageCenter
-    //                    anchors.fill: parent
-    //                    cache: true; asynchronous: true
-
-    //                    source: model.artwork.url.replace("{w}", width).replace("{h}", height)
-
-    //                    onStatusChanged: {
-    //                        _itemDelegate.ListView.view.imageLoaded(index, _imageCenter);
-    //                    }
-    //                }
-    //            }
-
-    //            Column {
-    //                anchors.top: _imageContainer.bottom
-    //                anchors.topMargin: dp(40)
-    //                anchors.horizontalCenter: parent.horizontalCenter
-
-    //                width: _itemContainer.width
-
-    //                spacing: dp(14)
-
-    //                Text {
-    //                    width: parent.width
-    //                    horizontalAlignment: Text.AlignHCenter
-    //                    color: "#FFFFFF"
-    //                    font.pixelSize: dp(42)
-    //                    font.bold: true
-    //                    text: model.name
-    //                }
-
-    //                Text {
-    //                    width: parent.width
-    //                    horizontalAlignment: Text.AlignHCenter
-    //                    color: "#FEFEFE"
-    //                    font.pixelSize: dp(36)
-    //                    font.bold: true
-    //                    text: model.artistName
-    //                }
-    //            }
-    //        }
-    //    }
+        transitions: [
+            Transition {
+                from: "hidden"
+                to: ""
+                reversible: true
+                NumberAnimation {
+                    target: root
+                    property: "anchors.rightMargin"
+                    duration: 250
+                    easing.type: Easing.OutCubic
+                    easing.overshoot: 0.4
+                }
+            }
+        ]
+    }
 }

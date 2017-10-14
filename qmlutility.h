@@ -17,9 +17,6 @@ public:
     Q_INVOKABLE void setGlobalProperty(const QString &key, const QVariant &value);
     void initializeGlobalProperties();
 
-    /*! Retrieve a random color in hex value */
-    Q_INVOKABLE QColor getRandomColor();
-
     /*! Singleton instance for both Qml and C++ */
     static QmlUtility *s_instance;
 
@@ -28,6 +25,14 @@ public:
 
     /*! QML-based singleton provider */
     static QObject *qmlInstance(QQmlEngine *engine, QJSEngine *scriptEngine);
+
+    /*! Retrieve a random color in hex value */
+    Q_INVOKABLE QColor getRandomColor();
+
+    /*! Test to retrieve the ID of a QML Object */
+    Q_INVOKABLE QString getQmlIdentifier(QObject *qmlItem);
+
+    Q_INVOKABLE QJSValue getQmlObjectById(const QString& id);
 
     enum DebugType {
         DebugTypeList = 1,

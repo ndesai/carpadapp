@@ -13,7 +13,8 @@ Item {
 
     QGE.FastBlur {
         id: _fastBlur
-        radius: 120
+        radius: 150
+//        samples: 16
         anchors.centerIn: parent
         width: parent.width * 2
         height: parent.height * 2
